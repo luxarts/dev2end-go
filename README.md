@@ -11,6 +11,7 @@ Una guía para desarrolladores de backend en Go.
 6. Punteros
 7. Estructuras e interfaces
 8. Paquetes y dependencias
+9. Canales
 
 ### Aprendiendo backend
 1. HTTP y APIs REST
