@@ -1,26 +1,27 @@
 package main
 
 func main() {
-	x, y := 1, 2
-	// Si X es igual a Y
-	if x == y {
+	X, Y := 1, 2
+
+
+	if X == Y { // Si X es igual a Y
 		// Hago esto
-	} else if x > y { // Sino, si es mayor la X
+	} else if X > Y { // Sino, si es mayor la X
 		// Hago esto otro
 	} else { // Sino
 		// Hago esto otro
 	}
 
-	z := 2
+	nombre := "Juan"
 
-	switch z {
-	case 0:
+	switch nombre {
+	case "Juan": // Si nombre es Juan
 		// Hago esto
-	case 1:
+	case "Pablo": // Si nombre es Pablo
 		// Hago esto otro
-	case 2:
+	case "Pedro": // Si nombre es Pedro
 		// Hago esto otro
-	default: // Sino es ningun caso
+	default: // Si no es ningún caso
 		// Hago esto otro
 	}
 }

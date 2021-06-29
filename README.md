@@ -21,7 +21,7 @@ No dudes en enviar un PR con los cambios propuestos. Toda crítica constructiva 
 6. Punteros
 7. Estructuras e interfaces
 8. Paquetes y dependencias
-9. Canales
+9. Canales y goroutines
 10. Testing
 
 ### B. Aprendiendo backend
@@ -44,13 +44,26 @@ No dudes en enviar un PR con los cambios propuestos. Toda crítica constructiva 
     - Decorator
     - Observer
 2. Estructuras de datos
-    - Array
-    - Linked list
-    - Hash table
-    - Stack / queue
+    - Vector (array)
+    - Lista enlazada (linked list)
+    - Tabla de hash o mapa (hash table)
+    - Pila (stack)
+    - Cola (queue)
 3. Complejidad algorítmica
 4. Seguridad de datos
-
+5. Otros conocimientos
+   - Git y gitflow
+   - Docker
+   - Estrategias de deploy
+     - Canary
+     - Blue/green
+     - All in
+   - Balanceador de carga
+   - Proxy
+   - Integración Continua (CI)
+   - Despliegue Continuo (CD)
+   - Logs y métricas
+   
 ---
 
 ## Links útiles
