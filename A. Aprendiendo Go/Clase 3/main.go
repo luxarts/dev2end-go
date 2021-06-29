@@ -4,10 +4,11 @@ import "fmt"
 
 // Se crea una función que recibe un string y devuelve un string
 func saludar(nombre string) string {
-	return "Hola " + nombre // Concatena 'Hola' con la variable recibida
+	return "Hola " + nombre // Concatena el string 'Hola' con la variable recibida
 }
 
 func main() {
+	// Se llama a la función 'saludar' con el parámetro 'Bruce'
 	saludo := saludar("Bruce")
 	fmt.Println(saludo)
 
