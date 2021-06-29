@@ -19,10 +19,11 @@ func main() {
 	var pa *int = &a // Ejemplo: pa = 0x1234
 	var pb *int = &b // Ejemplo: pb = 0x5678
 
-	fmt.Printf("a vale %v y su dirección es %d\n", a, pa)
-	fmt.Printf("b vale %v y su dirección es %d\n", b, pb)
-	// Nota: En los Printf, se pueden usar caracteres especiales en el string que serán reemplazados con los valores de
-	// las variables. En este caso, el '%v' significa que ahí se escribirá el valor con el tipo de dato de la variable.
+	fmt.Printf("a vale %v y su dirección es %v\n", a, pa)
+	fmt.Printf("b vale %v y su dirección es %v\n", b, pb)
+	// Nota: En los Printf, se pueden usar secuencias de caracteres especiales en el string que serán reemplazados
+	// con los valores de las variables. En este caso, el '%v' significa que ahí se escribirá el valor con el
+	// tipo de dato de la variable.
 
 	// El símbolo '*' en una variable declarada como puntero, indica que se quiere obtener el valor en vez de
 	// la dirección de memoria.
