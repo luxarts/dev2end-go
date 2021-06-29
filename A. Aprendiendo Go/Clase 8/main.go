@@ -68,8 +68,8 @@ func newMotocicleta(marca string, combustible string) motocicleta {
 
 // Definimos una interfaz vehículo
 type vehiculo interface {
-	acelerar()
-	desacelerar()
+	acelerar() // Todos los vehiculos tendrán que tener una función acelerar
+	desacelerar() // Todos los vehiculos tendrán que tener una función desacelerar
 }
 
 // Definimos el constructor de un vehiculo
