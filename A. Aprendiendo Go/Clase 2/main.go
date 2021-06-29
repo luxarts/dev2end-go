@@ -6,18 +6,20 @@ import (
 )
 
 func main() {
-	// Hay dos formas de declarar una variable
-	var nombre string = "Bruce" // var nombreDeLaVariable tipo = valor
+	// Hay dos formas de declarar una variable:
+	// Con la palabra 'var' y el tipo de dato
+	var nombre = "Bruce" // var nombreDeLaVariable tipo = valor
+	// Nota: Para algunos tipos de dato, el tipo puede ser omitido si se asigna un valor a la variable
 
-	// o
+	// o con el operador := con el cual el tipo de dato se infiere por el valor
 	apellido := "Wayne" // nombreDeLaVariable := valor
 
-	// En este segunda forma, el tipo de datos se determina por el valor
-
+	// Mostrar las variables
 	fmt.Println(nombre, apellido)
 
-	// Se pueden crear multiples variables en una sola linea
+	// Se pueden crear multiples variables y asignarles valores a las mismas en una sola línea
 	x, y := 1, 2
+
 	fmt.Println(x, y)
 
 	/* -------------------------------------------------------------------- */
@@ -45,7 +47,9 @@ func main() {
 
 	var cadenaDeCaracteres string = "texto"
 
-	var unError error = errors.New("Esto es un error")
+	var unError error = errors.New("esto es un error")
+	// El tipo de datos "error" en verdad es una interfaz.
+	// Más sobre interfaces en la clase 7
 
 	var booleano bool = true
 
@@ -54,6 +58,9 @@ func main() {
 
 	// Para obtener la dirección de memoria en vez del valor se utiliza el símbolo '&' antes de la variable
 	var punteroDeUnString *string = &cadenaDeCaracteres
+	// Nota: Explicación sobre punteros en la clase 6
+
+	/* -------------------------------------------------------------------- */
 
 	fmt.Printf("Numero: %v\n", numero)
 	fmt.Printf("Numero s/ signo: %v\n", numeroSinSigno)
