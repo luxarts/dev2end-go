@@ -22,9 +22,10 @@ No dudes en enviar un PR con los cambios propuestos. Toda crítica constructiva 
 7. Estructuras
 8. Interfaces
 9. Paquetes y dependencias
-10. Canales y goroutines
-11. Testing
-12. Mocks
+10. Gorutinas (concurrencia)
+11. Canales
+12. Testing
+13. Mocks
 
 ### B. Aprendiendo backend
 1. HTTP y APIs REST
