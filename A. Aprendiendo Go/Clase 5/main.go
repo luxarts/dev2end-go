@@ -28,6 +28,7 @@ func main() {
 		if contador == 10 { // Si el contador llega a 10, la condición se hace false
 			condicion = false
 		} else {
+			fmt.Println("Contador: ", contador)
 			contador++
 		}
 	}
