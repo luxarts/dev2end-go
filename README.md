@@ -19,10 +19,12 @@ No dudes en enviar un PR con los cambios propuestos. Toda crítica constructiva 
 4. Sentencias de condición
 5. Sentencias de iteración
 6. Punteros
-7. Estructuras e interfaces
-8. Paquetes y dependencias
-9. Canales y goroutines
-10. Testing
+7. Estructuras
+8. Interfaces
+9. Paquetes y dependencias
+10. Canales y goroutines
+11. Testing
+12. Mocks
 
 ### B. Aprendiendo backend
 1. HTTP y APIs REST
