@@ -15,10 +15,11 @@ func main() {
 	saludar("Juan")
 	saludar("Pedro")
 
-	fmt.Println("Tiempo transcurrido de manera secuencial (sincrónica):",time.Since(tiempo))
+	fmt.Println("Tiempo transcurrido de manera secuencial (sincrónica):", time.Since(tiempo))
 
-	// Esto como vemos tarda 2 segundos ya que despues de cada saludo espera 1 segundo
+	// Esto como vemos tarda 2 segundos ya que después de cada saludo espera 1 segundo
 
+	// Veamos ahora con go rutinas
 	// Guardamos el tiempo actual
 	tiempo = time.Now()
 
@@ -32,6 +33,8 @@ func main() {
 	// Este sleep es necesario para esperar a que las go routinas se ejecuten ya que al ser tán rápida la ejecución el
 	// programa terminaría antes de que el saludo sea escrito.
 	time.Sleep(1*time.Second)
+
+	// Nota: El main es considerada una goroutine
 }
 
 func saludar(nombre string){
