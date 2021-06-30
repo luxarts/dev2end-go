@@ -4,12 +4,12 @@ import "fmt"
 
 // Una estructura se usa para definir un tipo de datos que agrupa variables (propiedades)
 type automovil struct {
-	marca string
+	marca  string
 	ruedas int
-	motor motor // Una estructura puede tener una propiedad que sea de tipo estructura también
+	motor  motorStruct // Una estructura puede tener una propiedad que sea de tipo estructura también
 }
 
-type motor struct {
+type motorStruct struct {
 	combustible string
 	acelerando bool
 }
@@ -20,19 +20,19 @@ func (a automovil) acelerar() {
 	// La variable 'a' representa a un automovil y contiene las propiedades del mismo
 	a.motor.acelerando = true
 
-	fmt.Println("Pisando el pedal acelerador...")
+	fmt.Printf("Pisando el pedal acelerador del auto %s...\n", a.marca)
 }
 func (a automovil) desacelerar() {
 	a.motor.acelerando = false
 
-	fmt.Println("Soltando el pedal acelerador...")
+	fmt.Printf("Soltando el pedal acelerador del auto %s...\n", a.marca)
 }
 
 func newAutomovil(marca string, combustible string) automovil {
 	return automovil{
 		marca:  marca,
 		ruedas: 4,
-		motor:  motor{
+		motor:  motorStruct{
 			combustible: combustible,
 		},
 	}
@@ -43,15 +43,15 @@ func main() {
 	auto1 := automovil{
 		marca:  "Volkswagen",
 		ruedas: 4,
-		motor:  motor{
+		motor:  motorStruct{
 			combustible: "GNC",
 		},
 	}
 	// Nota: Si a una propiedad no se le asigna valor, esta tomará el "zero value" correspondiente. En este caso la
-	// propiedad 'acelerando' dentro de 'motor' tendrá como valor false.
+	// propiedad 'acelerando' dentro de 'motorStruct' tendrá como valor false.
 
 	// Sin embargo es una buena práctica usar una función constructora que devuelva una estructura
-	auto2 := newAutomovil("Volkswagen", "GNC")
+	auto2 := newAutomovil("Audi", "Premium")
 
 	// Para usar las funciones de la estructura lo hacemos de la siguiente manera
 	auto1.acelerar()
