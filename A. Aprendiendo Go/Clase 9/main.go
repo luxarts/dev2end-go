@@ -1,7 +1,9 @@
 package main
 
 // Importamos el código de los paquetes internos
-import "clase9/vehiculo"
+import (
+	"clase9/vehiculo"
+)
 
 // En Go los proyectos se llaman módulos.
 // El archivo go.mod contiene la versión de Go y las dependencias (librerías) que se necesitan en el proyecto.

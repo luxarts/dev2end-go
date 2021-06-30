@@ -25,5 +25,5 @@ func NewVehiculo(tipo string, marca string, combustible string) Vehiculo {
 	return v
 }
 
-// Nota: Para poder usar las funciones y variables declaradas desde otro paquete, estas deben comenzar con la
-// primer letra en mayúscula
+// Nota: Para poder usar las funciones, variables o constantes declaradas desde otro paquete, estas deben comenzar
+// con la primera letra en mayúscula
