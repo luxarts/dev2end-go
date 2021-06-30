@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-// Como vimos en la clase anterior, las estructuras pueden propiedades y funciones asignadas
+// Como vimos en la clase anterior, las estructuras pueden tener propiedades y funciones asignadas
 // Las interfaces se utilizan para definir un tipo de dato que agrupa funciones.
 // Cuando una estructura contiene esas funciones se dice que implementa a esa interfaz
 
@@ -83,8 +83,8 @@ func newVehiculo(tipo string, marca string, combustible string) vehiculo {
 		v = newAutomovil(marca, combustible)
 	}
 
-	// Como 'motocicleta' y 'automovil' tienen las misma funciones que la interfaz, decimos que ambas son
-	// implementaciones
+	// Como 'motocicleta' y 'automovil' tienen las mismas funciones que la interfaz 'vehiculo', decimos que ambas son
+	// implementaciones de esta
 
 	return v
 }
@@ -96,7 +96,7 @@ func main() {
 	auto.acelerar()
 	auto.desacelerar()
 
-	// Para crear una motocicleta, simplemente cambiamos el valor que le pasamos al constructorç
+	// Para crear una motocicleta, simplemente cambiamos el valor que le pasamos al constructor
 	moto := newVehiculo("motocicleta", "Honda", "Super")
 	moto.acelerar()
 	moto.desacelerar()
