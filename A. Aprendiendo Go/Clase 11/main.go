@@ -59,6 +59,4 @@ func main(){
 	// Podemos leer directamente el canal sin tener que guardarlo en una variable antes
 	fmt.Println(<-resultChan)
 	fmt.Println("Tiempo transcurrido despues del segundo resultado: ", time.Since(t))
-
-
 }
