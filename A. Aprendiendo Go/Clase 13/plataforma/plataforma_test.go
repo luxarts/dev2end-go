@@ -9,13 +9,20 @@ import (
 
 func TestPlataforma_ObtenerPeliculaPorTitulo_OK(t *testing.T) {
 	// Given
+
+	// Creamos una película de ejemplo
 	peliSpiderman := peliculas_db.Pelicula{
 		ID:     999,
 		Titulo: "Spiderman",
 		Genero: "Accion",
 	}
 
+	// Creamos una base de datos de películas pero en vez de usar la original, usamos nuestro mock
 	peliculasDBMock := new(peliculas_db.PeliculasDBMock)
+
+	// El método `On` recibe como primer parámetro el nombre de la función que queremos reemplazar y como siguientes
+	// parámetros los valores que serán recibidos por la función.
+	// El método `Return` recibe todos los valores que debe devolver la función mock.
 	peliculasDBMock.On("ObtenerPorTitulo", "Spiderman").Return(peliSpiderman, nil)
 
 	plat := NewPlataforma(peliculasDBMock)
@@ -40,6 +47,7 @@ func TestPlataforma_ObtenerPeliculaPorTitulo_ErrorSiNoExiste(t *testing.T) {
 	// When
 
 	// Then
+	// Para testear si una función tira panic usamos el método `Panics` y ejecutamos la función dentro de una función anónima
 	require.Panics(t, func(){ plat.ObtenerPeliculaPorTitulo("Spiderman") })
 }
 
