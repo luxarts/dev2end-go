@@ -2,11 +2,12 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 func main() {
 	router := InitRouter()
-	router.Run(":8080")
+	router.Run("127.0.0.1:9090")
 }
 
 func InitRouter() *gin.Engine {
@@ -19,5 +20,9 @@ func InitRouter() *gin.Engine {
 
 
 func MapRoutes(router *gin.Engine) {
+	router.GET("/saludar/:nombre", saludar)
+}
 
+func saludar(ctx *gin.Context){
+	ctx.String(http.StatusOK, "Hola "+ctx.Param("nombre"))
 }
