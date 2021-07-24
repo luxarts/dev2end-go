@@ -56,6 +56,7 @@ No dudes en enviar un PR con los cambios propuestos. Toda crítica constructiva 
 4. Seguridad de datos
 5. Otros conocimientos
    - Git y gitflow
+   - gRPC y protobuf
    - Docker
    - Estrategias de deploy
      - Canary

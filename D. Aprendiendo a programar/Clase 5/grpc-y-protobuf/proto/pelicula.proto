@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package pelicula;
+
+message AgregarPeliculaRequest {
+  string nombre = 1;
+  string genero = 2;
+  repeated string actores_principales = 3;
+}
+
+message AgregarPeliculaResponse {
+  uint32 id = 1;
+  string nombre = 2;
+  string genero = 3;
+  repeated string actores_principales = 4;
+}
+
+message ObtenerPeliculaPorNombreRequest {
+  string nombre = 1;
+}
+
+message ObtenerPeliculaPorNombreResponse {
+  uint32 id = 1;
+  string nombre = 2;
+  string genero = 3;
+  repeated string actores_principales = 4;
+}
+
+service PeliculaService {
+  rpc AgregarPelicula(AgregarPeliculaRequest) returns (AgregarPeliculaResponse);
+  rpc ObtenerPeliculaPorNombre(ObtenerPeliculaPorNombreRequest) returns (ObtenerPeliculaPorNombreResponse);
+}
