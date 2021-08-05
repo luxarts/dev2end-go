@@ -32,4 +32,5 @@ func mapRoutes(r *gin.Engine) {
 	r.POST("/user", usersCtrl.Create)
 	r.GET("/user/:userID", usersCtrl.GetByID)
 	r.DELETE("/user/:userID", usersCtrl.DeleteByID)
+	r.PUT("/user/:userID", usersCtrl.UpdateByID)
 }

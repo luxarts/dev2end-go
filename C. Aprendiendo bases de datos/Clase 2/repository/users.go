@@ -17,6 +17,7 @@ type UsersRepository interface {
 	Create(user *domain.UserRepository) (*domain.UserRepository, error)
 	GetByID(userID string) (*domain.UserRepository, error)
 	DeleteByID(userID string) error
+	UpdateByID(user *domain.UserRepository) error
 }
 
 type usersRepository struct {
@@ -96,6 +97,26 @@ func (r *usersRepository) DeleteByID(userID string) error {
 		return jsend.NewFailure("not-found")
 	}
 
+	if err != nil {
+		return jsend.NewError("deleteone-error", err)
+	}
+
+	return nil
+}
+func (r *usersRepository) UpdateByID(user *domain.UserRepository) error{
+	userBson, err := bson.Marshal(user)
+	if err != nil {
+		return jsend.NewError("marshal-error", err)
+	}
+
+	ctx, cancelCtx := context.WithTimeout(context.Background(), 1*time.Second)
+	defer cancelCtx()
+
+	resp, err := r.collection.ReplaceOne(ctx, bson.M{"_id": user.ID}, userBson)
+
+	if resp.MatchedCount == 0 {
+		return jsend.NewFailure("not-found")
+	}
 	if err != nil {
 		return jsend.NewError("deleteone-error", err)
 	}
