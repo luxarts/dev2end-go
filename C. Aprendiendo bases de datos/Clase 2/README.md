@@ -10,3 +10,21 @@
    ```
    go run main.go
    ```
+
+---
+# API calls
+## Crear usuario
+```
+curl --location --request POST 'localhost:9090/user' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "Cosme fulanito",
+    "password":" 1234",
+    "email": "algo@algo.com"
+}'
+```
+
+## Obtener usuario por ID
+```
+curl --location --request GET 'localhost:9090/user/:userID'
+```
