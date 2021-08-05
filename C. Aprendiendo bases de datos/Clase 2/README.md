@@ -28,3 +28,18 @@ curl --location --request POST 'localhost:9090/user' \
 ```
 curl --location --request GET 'localhost:9090/user/:userID'
 ```
+
+## Actualizar usuario por ID
+```
+curl --location --request PUT 'localhost:9090/user/:userID' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "Otro fulanito",
+    "password":" 1234",
+    "email": "otro@otro.com"
+}'
+```
+## Borrar usuario por ID
+```
+curl --location --request DELETE 'localhost:9090/user/:userID'
+```
