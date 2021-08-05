@@ -8,6 +8,7 @@ import (
 type UsersService interface {
 	Create(user *domain.UsersPOSTBody) (*domain.UsersGETResponse, error)
 	GetByID(userID string) (*domain.UsersGETResponse, error)
+	DeleteByID(userID string) error
 }
 
 type usersService struct {
@@ -52,4 +53,7 @@ func (s *usersService) GetByID(userID string) (*domain.UsersGETResponse, error){
 	user.FromUserRepository(userRepo)
 
 	return &user, nil
+}
+func (s *usersService) DeleteByID(userID string) error {
+	return s.usersRepo.DeleteByID(userID)
 }

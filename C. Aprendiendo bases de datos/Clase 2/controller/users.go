@@ -11,6 +11,7 @@ import (
 type UsersController interface {
 	Create(ctx *gin.Context)
 	GetByID(ctx *gin.Context)
+	DeleteByID(ctx *gin.Context)
 }
 
 type usersController struct {
@@ -44,21 +45,41 @@ func (c *usersController) GetByID(ctx *gin.Context){
 	id := ctx.Param("userID")
 
 	if id == "" {
-		ctx.JSON(http.StatusBadRequest, "Missing user ID.")
+		ctx.JSON(http.StatusBadRequest, jsend.NewFailure("missing-user-id"))
 		return
 	}
 
 	response, err := c.usersService.GetByID(id)
 
 	if err != nil {
-		ctx.JSON(http.StatusInternalServerError, err)
-		return
-	}
-
-	if response == nil {
-		ctx.JSON(http.StatusNotFound, jsend.NewFailure("not-found"))
+		if err.Error() == "not-found" {
+			ctx.JSON(http.StatusNotFound, jsend.NewFailure("not-found"))
+		} else {
+			ctx.JSON(http.StatusInternalServerError, err)
+		}
 		return
 	}
 
 	ctx.JSON(http.StatusOK, jsend.NewResponse(response))
+}
+func (c *usersController) DeleteByID(ctx *gin.Context){
+	id := ctx.Param("userID")
+
+	if id == "" {
+		ctx.JSON(http.StatusBadRequest, jsend.NewFailure("missing-user-id"))
+		return
+	}
+
+	err := c.usersService.DeleteByID(id)
+
+	if err != nil {
+		if err.Error() == "not-found" {
+			ctx.JSON(http.StatusNotFound, err)
+		} else {
+			ctx.JSON(http.StatusInternalServerError, err)
+		}
+		return
+	}
+
+	ctx.JSON(http.StatusNoContent, nil)
 }

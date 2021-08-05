@@ -16,6 +16,7 @@ import (
 type UsersRepository interface {
 	Create(user *domain.UserRepository) (*domain.UserRepository, error)
 	GetByID(userID string) (*domain.UserRepository, error)
+	DeleteByID(userID string) error
 }
 
 type usersRepository struct {
@@ -41,7 +42,7 @@ func NewUsersRepository() UsersRepository {
 	}
 }
 
-func (s *usersRepository) Create(user *domain.UserRepository) (*domain.UserRepository, error){
+func (r *usersRepository) Create(user *domain.UserRepository) (*domain.UserRepository, error){
 	userBson, err := bson.Marshal(user)
 	if err != nil {
 		return nil, jsend.NewError("marshal-error", err)
@@ -50,7 +51,7 @@ func (s *usersRepository) Create(user *domain.UserRepository) (*domain.UserRepos
 	ctx, cancelCtx := context.WithTimeout(context.Background(), 1*time.Second)
 	defer cancelCtx()
 
-	resp, err := s.collection.InsertOne(ctx, userBson)
+	resp, err := r.collection.InsertOne(ctx, userBson)
 	if err != nil {
 		return nil, jsend.NewError("insertone-error", err)
 	}
@@ -60,7 +61,7 @@ func (s *usersRepository) Create(user *domain.UserRepository) (*domain.UserRepos
 
 	return user, nil
 }
-func (s *usersRepository) GetByID(userID string) (*domain.UserRepository, error) {
+func (r *usersRepository) GetByID(userID string) (*domain.UserRepository, error) {
 	ctx, cancelCtx := context.WithTimeout(context.Background(), 1*time.Second)
 	defer cancelCtx()
 
@@ -69,9 +70,9 @@ func (s *usersRepository) GetByID(userID string) (*domain.UserRepository, error)
 		return nil, jsend.NewError("objectidfromhex-error", err)
 	}
 
-	result := s.collection.FindOne(ctx, bson.M{"_id": objectID})
+	result := r.collection.FindOne(ctx, bson.M{"_id": objectID})
 	if result.Err() == mongo.ErrNoDocuments {
-		return nil, nil
+		return nil, jsend.NewFailure("not-found")
 	}
 
 	var user domain.UserRepository
@@ -80,4 +81,24 @@ func (s *usersRepository) GetByID(userID string) (*domain.UserRepository, error)
 	}
 
 	return &user, nil
+}
+func (r *usersRepository) DeleteByID(userID string) error {
+	ctx, cancelCtx := context.WithTimeout(context.Background(), 1*time.Second)
+	defer cancelCtx()
+
+	objectID, err := primitive.ObjectIDFromHex(userID)
+	if err != nil {
+		return jsend.NewError("objectidfromhex-error", err)
+	}
+
+	result, err := r.collection.DeleteOne(ctx, bson.M{"_id": objectID})
+	if result.DeletedCount == 0 {
+		return jsend.NewFailure("not-found")
+	}
+
+	if err != nil {
+		return jsend.NewError("deleteone-error", err)
+	}
+
+	return nil
 }

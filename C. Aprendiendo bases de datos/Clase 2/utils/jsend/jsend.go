@@ -1,5 +1,7 @@
 package jsend
 
+import "fmt"
+
 const (
 	StatusSuccess = "success"
 	StatusError = "error"
@@ -36,5 +38,9 @@ func NewResponse(data interface{}) *ApiResponse {
 }
 
 func (e *ApiResponse) Error() string {
-	return e.Message
+	if e.Status == StatusError{
+		return e.Message
+	} else {
+		return fmt.Sprintf("%v", e.Data)
+	}
 }

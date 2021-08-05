@@ -29,8 +29,7 @@ func mapRoutes(r *gin.Engine) {
 	// Instanciamos el controller
 	usersCtrl := controller.NewUsersController(usersSrv)
 
-	// Endpoint POST user
 	r.POST("/user", usersCtrl.Create)
-	// Endpoint GET user by ID
 	r.GET("/user/:userID", usersCtrl.GetByID)
+	r.DELETE("/user/:userID", usersCtrl.DeleteByID)
 }
