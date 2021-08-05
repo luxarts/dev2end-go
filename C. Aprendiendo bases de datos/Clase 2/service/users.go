@@ -3,13 +3,11 @@ package service
 import (
 	"clase2/domain"
 	"clase2/repository"
-	"fmt"
-	"go.mongodb.org/mongo-driver/x/mongo/driver/uuid"
 )
 
 type UsersService interface {
-	Create(user *domain.UsersPOSTBody) *domain.UsersGETResponse
-	GetByID(userID string) *domain.UsersGETResponse
+	Create(user *domain.UsersPOSTBody) (*domain.UsersGETResponse, error)
+	GetByID(userID string) (*domain.UsersGETResponse, error)
 }
 
 type usersService struct {
@@ -22,34 +20,36 @@ func NewUsersService(repo repository.UsersRepository) UsersService {
 	}
 }
 
-func (s *usersService) Create(userBody*domain.UsersPOSTBody) *domain.UsersGETResponse{
+func (s *usersService) Create(userBody *domain.UsersPOSTBody) (*domain.UsersGETResponse, error){
 	var userRepo domain.UserRepository
 
 	userRepo.FromPOSTBody(userBody)
 
-	// Genera un UUID
-	uuid, err := uuid.New()
+	response, err := s.usersRepo.Create(&userRepo)
+
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
-	userRepo.ID = fmt.Sprintf("%X", uuid)
-
-	userRepo = *s.usersRepo.Create(&userRepo)
-
 	var user domain.UsersGETResponse
+	user.FromUserRepository(response)
 
-	user.FromUserRepository(&userRepo)
-
-	return &user
+	return &user, nil
 }
 
-func (s *usersService) GetByID(userID string) *domain.UsersGETResponse {
-	userRepo := s.usersRepo.GetByID(userID)
+func (s *usersService) GetByID(userID string) (*domain.UsersGETResponse, error){
+	userRepo, err := s.usersRepo.GetByID(userID)
+
+	if err != nil {
+		return nil, err
+	}
+	if userRepo == nil {
+		return nil, nil
+	}
 
 	var user domain.UsersGETResponse
 
 	user.FromUserRepository(userRepo)
 
-	return &user
+	return &user, nil
 }

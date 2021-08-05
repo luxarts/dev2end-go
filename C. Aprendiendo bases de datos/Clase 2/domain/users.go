@@ -1,5 +1,7 @@
 package domain
 
+import "go.mongodb.org/mongo-driver/bson/primitive"
+
 type UsersPOSTBody struct {
 	Name string `json:"name"`
 	Password string `json:"password"`
@@ -13,16 +15,16 @@ type UsersGETResponse struct {
 }
 
 func (u *UsersGETResponse) FromUserRepository(urepo *UserRepository){
-	u.ID = urepo.ID
+	u.ID = urepo.ID.Hex()
 	u.Name = urepo.Name
 	u.Email = urepo.Email
 }
 
 type UserRepository struct {
-	ID string
-	Name string
-	Password string
-	Email string
+	ID primitive.ObjectID `bson:"_id,omitempty"`
+	Name string `bson:"name"`
+	Password string `bson:"password"`
+	Email string `bson:"email"`
 }
 
 func (u *UserRepository) FromPOSTBody(body *UsersPOSTBody){

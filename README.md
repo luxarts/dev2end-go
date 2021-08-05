@@ -36,7 +36,8 @@ No dudes en enviar un PR con los cambios propuestos. Toda crítica constructiva 
 ### C. Aprendiendo bases de datos
 1. Tipos (relacionales y no relacionales)
 2. Persistiendo datos en una base no relacional (MongoDB)
-3. Persistiendo datos en una base relacional (MySQL)
+3. Persistiendo datos en una base relacional (PostreSQL)
+4. Cache
 
 ### D. Aprendiendo a programar
 1. Patrones de diseño

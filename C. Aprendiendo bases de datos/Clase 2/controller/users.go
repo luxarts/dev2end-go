@@ -3,6 +3,7 @@ package controller
 import (
 	"clase2/domain"
 	"clase2/service"
+	"clase2/utils/jsend"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -27,20 +28,37 @@ func (c *usersController) Create(ctx *gin.Context){
 
 	if err := ctx.ShouldBindJSON(&userBody); err != nil {
 		ctx.JSON(http.StatusBadRequest, "Invalid body.")
+		return
 	}
 
-	response := c.usersService.Create(&userBody)
+	response, err := c.usersService.Create(&userBody)
 
-	ctx.JSON(http.StatusCreated, response)
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, err)
+		return
+	}
+
+	ctx.JSON(http.StatusCreated, jsend.NewResponse(response))
 }
 func (c *usersController) GetByID(ctx *gin.Context){
 	id := ctx.Param("userID")
 
 	if id == "" {
 		ctx.JSON(http.StatusBadRequest, "Missing user ID.")
+		return
 	}
 
-	response := c.usersService.GetByID(id)
+	response, err := c.usersService.GetByID(id)
 
-	ctx.JSON(http.StatusOK, response)
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, err)
+		return
+	}
+
+	if response == nil {
+		ctx.JSON(http.StatusNotFound, jsend.NewFailure("not-found"))
+		return
+	}
+
+	ctx.JSON(http.StatusOK, jsend.NewResponse(response))
 }
