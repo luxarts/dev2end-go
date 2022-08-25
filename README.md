@@ -68,6 +68,8 @@ No dudes en enviar un PR con los cambios propuestos. Toda crítica constructiva 
    - Despliegue Continuo (CD)
    - Logs y métricas
    
+# E. Aprendiendo AWS
+1. Funciones Lambda
 ---
 
 ## Links útiles
