@@ -1,4 +1,4 @@
-module grpc-y-protobuf
+module clase1
 
 go 1.16
 

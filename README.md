@@ -39,34 +39,38 @@ No dudes en enviar un PR con los cambios propuestos. Toda crítica constructiva 
 3. Persistiendo datos en una base relacional (MySQL)
 
 ### D. Aprendiendo a programar
-1. Patrones de diseño
+1. Git y gitflow
+2. Patrones de diseño
     - Factory
     - Abstract factory
     - Strategy
     - Singleton
     - Decorator
     - Observer
-2. Estructuras de datos
+3. Estructuras de datos
     - Vector (array)
     - Lista enlazada (linked list)
     - Tabla de hash o mapa (hash table)
     - Pila (stack)
     - Cola (queue)
-3. Complejidad algorítmica
-4. Seguridad de datos
-5. Otros conocimientos
-   - Git y gitflow
-   - gRPC y protobuf
-   - Docker
-   - Estrategias de deploy
-     - Canary
-     - Blue/green
-     - All in
-   - Balanceador de carga
-   - Proxy
-   - Integración Continua (CI)
-   - Despliegue Continuo (CD)
-   - Logs y métricas
+4. Complejidad algorítmica
+5. Seguridad de datos
+
+### E. Otros conocimientos
+1. gRPC y protobuf  
+2. Docker  
+3. Estrategias de deploy  
+   - Canary
+   - Blue/green
+   - All in
+4. Balanceador de carga  
+5. Proxy  
+6. Integración Continua (CI)  
+7. Despliegue Continuo (CD)  
+8. Logs y métricas
+9. OAuth2
+10. AWS
+    - Funciones Lambda
    
 ---
 
