@@ -1,7 +1,7 @@
 package service
 
 import (
-	"clase1/internal/defines"
+	"clase10/internal/defines"
 	"errors"
 	"fmt"
 )

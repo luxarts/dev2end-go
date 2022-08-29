@@ -1,4 +1,4 @@
-module clase1
+module clase10
 
 go 1.19
 

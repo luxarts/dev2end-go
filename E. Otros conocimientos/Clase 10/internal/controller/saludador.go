@@ -1,8 +1,8 @@
 package controller
 
 import (
-	"clase1/internal/domain"
-	"clase1/internal/service"
+	"clase10/internal/domain"
+	"clase10/internal/service"
 	"context"
 	"net/http"
 )

@@ -1,9 +1,9 @@
 package main
 
 import (
-	"clase1/internal/controller"
-	"clase1/internal/defines"
-	"clase1/internal/service"
+	"clase10/internal/controller"
+	"clase10/internal/defines"
+	"clase10/internal/service"
 	"github.com/aws/aws-lambda-go/lambda"
 	"log"
 )
